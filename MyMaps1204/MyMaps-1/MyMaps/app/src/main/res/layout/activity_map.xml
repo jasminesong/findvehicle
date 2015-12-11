@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:custom="http://schemas.android.com/tools"
     android:orientation="vertical">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/fbutton_color_orange"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FindVehicle"
+            android:layout_gravity="left"
+            android:id="@+id/toolbar_title" />
+
+
+    </android.support.v7.widget.Toolbar>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -14,27 +35,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/my_toolbar" />
 
         <ruoyun.brandeis.edu.mymaps.SubmitProcessButton
             android:id="@+id/button1"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:text="Search"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            custom:pb_colorComplete="@color/green_complete"
-            custom:pb_colorNormal="@color/blue_normal"
-            custom:pb_colorPressed="@color/blue_pressed"
-            custom:pb_colorProgress="@color/green_complete"
-            custom:pb_textComplete="Success"
-            custom:pb_textProgress="Loading"
-            custom:pb_textError="Error"
-            custom:pb_colorError="@color/red_error" />
+
+            custom:pb_colorError="@color/red_error"
+            android:layout_below="@+id/my_toolbar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     <ruoyun.brandeis.edu.mymaps.FButton
         android:layout_width="match_parent"
@@ -43,25 +59,31 @@
         android:id="@+id/button2"
         android:text="Find My Vehicle"
         fbutton:buttonColor="@color/fbutton_color_orange"
-        fbutton:shadowColor="@color/fbutton_color_alizarin"
+        fbutton:shadowColor="@color/fbutton_color_carrot"
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="10dp"
         fbutton:cornerRadius="8dp"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="#5f3308"
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/button1"
-        android:layout_toLeftOf="@+id/button1"
         android:clickable="true"
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        android:paddingTop="20dp" />
+        android:paddingTop="22dp"
+        android:layout_alignTop="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/button1"
+        android:layout_toStartOf="@+id/button1"
+        android:autoText="true"
+        style="@style/Base.V12.Widget.AppCompat.EditText" />
 
 </RelativeLayout>
 

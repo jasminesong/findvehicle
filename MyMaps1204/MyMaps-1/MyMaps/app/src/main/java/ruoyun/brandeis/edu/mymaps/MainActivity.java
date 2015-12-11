@@ -3,6 +3,7 @@ package ruoyun.brandeis.edu.mymaps;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -62,6 +63,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (serviceOk()) {
             setContentView(R.layout.activity_map);
+
+
+            android.support.v7.widget.Toolbar myToolbar =
+                    (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+            myToolbar.setLogo(R.mipmap.ic_pink_car);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            //myToolbar.setTitleTextAppearance(this, QText);
+            Typeface face= Typeface.createFromAsset(getAssets(), "emmasophia.ttf");
+            TextView mTitle = (TextView) myToolbar.findViewById(R.id.toolbar_title);
+            mTitle.setTypeface(face);
+
             final ProgressGenerator progressGenerator = new ProgressGenerator(this);
             final SubmitProcessButton btn1 = (SubmitProcessButton) findViewById(R.id.button1);
 

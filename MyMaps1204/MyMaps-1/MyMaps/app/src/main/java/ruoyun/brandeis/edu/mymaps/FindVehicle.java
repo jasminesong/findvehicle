@@ -2,6 +2,7 @@ package ruoyun.brandeis.edu.mymaps;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -49,6 +51,16 @@ public class FindVehicle extends AppCompatActivity implements GoogleApiClient.Co
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_vehicle);
+
+        android.support.v7.widget.Toolbar myToolbar =
+                (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        myToolbar.setLogo(R.mipmap.ic_pink_car);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //myToolbar.setTitleTextAppearance(this, QText);
+        Typeface face= Typeface.createFromAsset(getAssets(), "emmasophia.ttf");
+        TextView mTitle = (TextView) myToolbar.findViewById(R.id.toolbar_title);
+        mTitle.setTypeface(face);
 
         Intent my_intent = getIntent();
         latLng = new LatLng(my_intent.getDoubleExtra("marker_latitude", 0.0),

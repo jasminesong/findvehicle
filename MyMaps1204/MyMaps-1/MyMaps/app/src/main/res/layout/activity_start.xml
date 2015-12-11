@@ -35,25 +35,27 @@
     <ruoyun.brandeis.edu.mymaps.FButton
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="outdoor"
+        android:text="Outdoor"
         android:id="@+id/button5"
         android:layout_gravity="right"
         android:layout_alignTop="@+id/button4"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         fbutton:buttonColor="@color/fbutton_color_orange"
-        fbutton:shadowColor="@color/fbutton_color_alizarin"
+        fbutton:shadowColor="@color/fbutton_color_carrot"
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="10dp"
         fbutton:cornerRadius="8dp"
-        android:textColor="#e03f16"
-        android:textSize="18sp" />
+        android:textColor="#5f3308"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
 
 
     <ruoyun.brandeis.edu.mymaps.FButton
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="indoor"
+        android:text="Indoor"
         android:id="@+id/button4"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
@@ -61,11 +63,13 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="103dp"
         fbutton:buttonColor="@color/fbutton_color_orange"
-        fbutton:shadowColor="@color/fbutton_color_alizarin"
+        fbutton:shadowColor="@color/fbutton_color_carrot"
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="10dp"
         fbutton:cornerRadius="8dp"
-        android:textColor="#e03f16"
-        android:textSize="18sp" />
+        android:textColor="#5f3308"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package ruoyun.brandeis.edu.mymaps;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 import ruoyun.brandeis.edu.mymaps.FButton;
 
 import com.google.android.gms.maps.model.LatLng;
+
+import static ruoyun.brandeis.edu.mymaps.R.style.QText;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener{
@@ -26,6 +32,17 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        android.support.v7.widget.Toolbar myToolbar =
+                (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        myToolbar.setLogo(R.mipmap.ic_pink_car);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //myToolbar.setTitleTextAppearance(this, QText);
+        Typeface face= Typeface.createFromAsset(getAssets(), "emmasophia.ttf");
+        TextView mTitle = (TextView) myToolbar.findViewById(R.id.toolbar_title);
+        mTitle.setTypeface(face);
+
 
         //modified by
         FButton btn5 = (FButton) findViewById(R.id.button5);

@@ -13,8 +13,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="FineVehicle"
-        android:theme="@style/AppTheme" >
+        android:label="FindVehicle"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
             android:name=".MainActivity"
             android:label="FindVehicle"
@@ -36,8 +36,8 @@
 
         <activity
             android:name=".StartActivity"
-            android:label="FindVehicle"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@mipmap/ic_launcher"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

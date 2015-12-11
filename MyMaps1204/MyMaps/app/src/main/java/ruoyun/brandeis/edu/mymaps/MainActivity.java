@@ -37,8 +37,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static ruoyun.brandeis.edu.mymaps.ProgressGenerator.*;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener
+        GoogleApiClient.OnConnectionFailedListener,OnCompleteListener
 
 {
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     //added by
     private MySqliteHelper mySqlite;
+    TextView tv;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (serviceOk()) {
             setContentView(R.layout.activity_map);
+            final ProgressGenerator progressGenerator = new ProgressGenerator(this);
+            final SubmitProcessButton btn1 = (SubmitProcessButton) findViewById(R.id.button1);
+
+            TextView tv = (TextView) findViewById(R.id.editText1);
 
 
             final EditText et = (EditText) findViewById(R.id.editText1);
@@ -67,6 +76,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 public void onClick(View v) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
+                }
+            });
+
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    progressGenerator.start(btn1);
+                    btn1.setEnabled(true);
+                    et.setEnabled(true);
+
                 }
             });
 
@@ -100,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         //click "Find My Vehicle" button,send location data to next activity and store in database
         Button btn2 = (Button) findViewById(R.id.button2);
+
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -281,7 +301,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         Toast.makeText(this, "geolocate!!!", Toast.LENGTH_LONG).show();
 
-        TextView tv = (TextView) findViewById(R.id.editText1);
         String searchString = tv.getText().toString();
 
         Geocoder gc = new Geocoder(this);
@@ -378,5 +397,20 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         }
 
         super.onRestart();
+    }
+
+    @Override
+    public void onComplete() throws IOException {
+        //geoLocate(tv);
+        final EditText et = (EditText) findViewById(R.id.editText1);
+        et.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
+
+            }
+        });
+
     }
 }

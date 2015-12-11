@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+        <ruoyun.brandeis.edu.mymaps.FButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/button3"
+            android:onClick=""
+            android:text="Done"
+            fbutton:buttonColor="@color/fbutton_color_orange"
+            fbutton:shadowColor="@color/fbutton_color_alizarin"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="10dp"
+            fbutton:cornerRadius="8dp"
+            android:textSize="18sp" />
+
+</RelativeLayout>

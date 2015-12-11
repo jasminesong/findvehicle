@@ -1,9 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:compat="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
 
+    <item android:id="@+id/action_whatever"
+        android:icon="@mipmap/ic_pink_car"
+        android:title=""
+        compat:showAsAction="ifRoom"  />
     <item
         android:id="@+id/mapTypeNormal"
         android:title="Normal"/>

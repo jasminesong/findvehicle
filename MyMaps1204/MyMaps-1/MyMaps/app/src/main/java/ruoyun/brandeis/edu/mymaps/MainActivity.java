@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         if (serviceOk()) {
             setContentView(R.layout.activity_map);
 
-
+            // code for custom toolbar
             android.support.v7.widget.Toolbar myToolbar =
                     (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
             setSupportActionBar(myToolbar);

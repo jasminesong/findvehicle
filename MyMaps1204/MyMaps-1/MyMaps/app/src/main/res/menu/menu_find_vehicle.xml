@@ -4,4 +4,11 @@
     tools:context="ruoyun.brandeis.edu.mymaps.FindVehicle">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item
+        android:id="@+id/return_button"
+        android:icon="@mipmap/ic_return"
+        app:showAsAction="always"
+        android:onClick="returnToMain"
+         />
 </menu>

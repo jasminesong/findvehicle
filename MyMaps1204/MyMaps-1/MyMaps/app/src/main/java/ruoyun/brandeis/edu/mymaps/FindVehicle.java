@@ -128,7 +128,7 @@ public class FindVehicle extends AppCompatActivity implements GoogleApiClient.Co
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.return_button) {
             return true;
         }
 
@@ -235,6 +235,12 @@ public class FindVehicle extends AppCompatActivity implements GoogleApiClient.Co
     }
 
 
+    public void returnToMain(MenuItem item) {
+
+        Intent my_intent = new Intent(FindVehicle.this,MainActivity.class);
+        startActivity(my_intent);
+
+    }
 }
 
 

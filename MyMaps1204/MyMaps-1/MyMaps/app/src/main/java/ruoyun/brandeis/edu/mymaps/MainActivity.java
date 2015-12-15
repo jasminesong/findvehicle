@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     //added by
     private MySqliteHelper mySqlite;
-    TextView tv;
+    //TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     progressGenerator.start(btn1);
                     btn1.setEnabled(true);
                     et.setEnabled(true);
+                    try {
+                        geoLocate(v);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             });
@@ -308,9 +313,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
     public void geoLocate(View v) throws IOException {
+
         hideSoftKeyboard(v);
 
         Toast.makeText(this, "geolocate!!!", Toast.LENGTH_LONG).show();
+
+        TextView tv = (TextView) findViewById(R.id.editText1);
 
         String searchString = tv.getText().toString();
 
@@ -419,7 +427,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             public void onClick(View v) {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
-
             }
         });
 

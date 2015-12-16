@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,9 +102,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             });
+
+            ImageButton imgBtn = (ImageButton)findViewById(R.id.imageButton);
+            imgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
+
+//            final MenuItem search = (MenuItem)findViewById(R.id.search);
+//            search.setOnMenuItemClickListener(new View.OnClickListener(){
+//
+//            });
 
 
             if (initMap()) {
@@ -136,21 +149,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         //click "Find My Vehicle" button,send location data to next activity and store in database
         Button btn2 = (Button) findViewById(R.id.button2);
 
-        btn2.setOnClickListener(new View.OnClickListener(){
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(marker!=null){
+                if (marker != null) {
                     LatLng latLng = marker.getPosition();
-                    Intent my_intent = new Intent(MainActivity.this,FindVehicle.class);
-                    my_intent.putExtra("marker_latitude",latLng.latitude);
+                    Intent my_intent = new Intent(MainActivity.this, FindVehicle.class);
+                    my_intent.putExtra("marker_latitude", latLng.latitude);
                     my_intent.putExtra("marker_longtitude", latLng.longitude);
                     startActivity(my_intent);
 
                     //modified by
                     //mySqlite.addLocation(latLng, 0);
 
-                }else{
-                    Toast.makeText(MainActivity.this,"Please long touch the map to place your car",
+                } else {
+                    Toast.makeText(MainActivity.this, "Please long touch the map to place your car",
                             Toast.LENGTH_LONG).show();
                 }
 
@@ -163,7 +176,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem item = menu.findItem(R.id.search);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                EditText et = (EditText) findViewById(R.id.editText1);
+                SubmitProcessButton btn1 = (SubmitProcessButton) findViewById(R.id.button1);
+                MainActivity.this.toggleView(btn1);
+                MainActivity.this.toggleView(et);
+
+                return true;
+            }
+        });
         return true;
+
     }
 
 
@@ -244,6 +272,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                         Address add = list.get(0);
 
                         MainActivity.this.addMarker(add, latLng.latitude, latLng.longitude);
+                        ImageButton imgBtn = (ImageButton)findViewById(R.id.imageButton);
+                        imgBtn.setVisibility(imgBtn.VISIBLE);
                         //added by
                         mySqlite.deleteLocations();
                         mySqlite.addLocation(latLng, 0);
@@ -332,7 +362,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
             double lat = add.getLatitude();
             double lng = add.getLongitude();
-            gotolocation(lat, lng, 15);
+            gotolocation(lat, lng, 18);
 
             //add vehicle marker automatically
             if (marker != null) {
@@ -344,6 +374,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     .draggable(true)
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pink_car));
             marker = mMap.addMarker(options);
+
+            EditText et = (EditText) findViewById(R.id.editText1);
+            SubmitProcessButton btn1 = (SubmitProcessButton) findViewById(R.id.button1);
+            et.setVisibility(et.GONE);
+            btn1.setVisibility(btn1.GONE);
 
         }
     }
@@ -431,4 +466,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         });
 
     }
+
+    public void toggleView(View view){
+        if(view.getVisibility()==View.GONE)
+            view.setVisibility(View.VISIBLE);
+        else if(view.getVisibility()==View.VISIBLE)
+            view.setVisibility(View.GONE);
+    }
+
+
 }

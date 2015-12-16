@@ -25,5 +25,12 @@
         app:showAsAction="always"
         android:onClick="showCurrentLocation"/>
 
+    <item
+        android:id="@+id/search"
+        android:icon="@mipmap/ic_search"
+        app:showAsAction="always"
+
+        />
+
 
 </menu>

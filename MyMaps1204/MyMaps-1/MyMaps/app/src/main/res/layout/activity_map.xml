@@ -46,7 +46,7 @@
             android:text="Search"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-
+            android:visibility="gone"
             custom:pb_colorError="@color/red_error"
             android:layout_below="@+id/my_toolbar"
             android:layout_alignParentRight="true"
@@ -83,7 +83,18 @@
         android:layout_toLeftOf="@+id/button1"
         android:layout_toStartOf="@+id/button1"
         android:autoText="true"
+        android:visibility="gone"
         style="@style/Base.V12.Widget.AppCompat.EditText" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:src="@mipmap/ic_pen"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>
 

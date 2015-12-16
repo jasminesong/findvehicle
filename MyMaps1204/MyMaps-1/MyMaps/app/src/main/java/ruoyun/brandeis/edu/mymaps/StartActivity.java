@@ -50,8 +50,19 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent my_intent = new Intent(StartActivity.this, MainActivity.class);
-                    startActivity(my_intent);
+                Intent my_intent = new Intent(StartActivity.this, MainActivity.class);
+                startActivity(my_intent);
+            }
+        });
+
+
+        FButton btn4 = (FButton) findViewById(R.id.button4);
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent my_intent = new Intent(StartActivity.this, Main2Activity.class);
+                startActivity(my_intent);
             }
         });
     }
